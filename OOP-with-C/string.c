@@ -77,3 +77,33 @@ char const* string_get_text(void* self) {
 	return c;
 }
 
+static struct _internal_string* string_get_internals(void* self) {
+	struct string* s = self;
+	return s->internals;
+}
+
+void string_set_text(void* self, char* text) {
+	struct _internal_string* internal = string_get_internals(self);
+	// TODO: add buffer 
+	free(internal->text);
+	internal->text = malloc(strlen(text) + 1);
+	strcpy(internal->text, text);
+	internal->length = strlen(text);
+}
+
+void string_concatc(void* self, char* text) {
+	if (strlen(text) == 0) return;
+	
+	struct _internal_string *string = string_get_internals(self);
+	// TODO: add buffer 
+	size_t l = strlen(text);
+	string->text = (char*)realloc(string->text, string->length + l + 1); // remember to add \0
+	strcpy(string->text + string->length, text, l);
+	string->length += l;
+}
+
+void string_concats(void* self, void* other) {
+	string_concatc(self, string_get_internals(other)->text);
+}
+
+

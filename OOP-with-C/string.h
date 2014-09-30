@@ -24,7 +24,14 @@ static int string_equals(const void* self, const void* b);
 // methods
 unsigned int string_length(void* self);
 char const*  string_get_text(void* self);
-//void string_set_text(void* self, char* )
+void string_set_text(void* self, char*);
+
+// string manipulation
+
+// concatenates char*
+void string_concatc(void*, char*);
+// concatenates string
+void string_concats(void*, void*);
 
 
 #endif
