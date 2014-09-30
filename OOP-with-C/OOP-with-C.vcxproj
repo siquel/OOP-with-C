@@ -77,10 +77,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.c" />
+    <ClCompile Include="new.c" />
     <ClCompile Include="string.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="class.h" />
+    <ClInclude Include="new.h" />
     <ClInclude Include="string.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

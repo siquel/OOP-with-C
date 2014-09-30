@@ -1,6 +1,6 @@
 #ifndef STRING_H
 #define STRING_H
-
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdarg.h>
 
 extern const void* string;
