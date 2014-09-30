@@ -31,7 +31,7 @@ void deconstruct(void* type)
 
 
 int main(void) {
-	void* a = construct(string, "a");
-	printf("%s", ((struct string*)a)->text);
+	void* a = construct(string, "aaa");
+	char const* v = string_get_text(a);
 	return 0;
 }
