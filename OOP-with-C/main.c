@@ -28,10 +28,22 @@ void deconstruct(void* type)
 	free(type);
 }
 
+int equals(const void* a, const void* b) {
+	const struct t_class* const *c = a;
+	// is null? has class? has equals?
+	assert(a && *c && (*c)->eq);
+	return (*c)->eq(a, b);
+}
 
 
 int main(void) {
 	void* a = construct(string, "aaa");
-	char const* v = string_get_text(a);
+	void* b = construct(string, "aab");
+	if (equals(a, b)) {
+		printf("equals");
+	}
+	else {
+		printf("not equal");
+	}
 	return 0;
 }

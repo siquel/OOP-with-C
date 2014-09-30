@@ -8,7 +8,8 @@
 static const struct t_class _string = {
 	sizeof(struct string),
 	string_new,
-	string_free
+	string_free,
+	string_equals
 };
 // abstract datatype of string
 const void* string = &_string;
@@ -49,6 +50,17 @@ static void* string_free(void* self) {
 	return string;
 }
 
+static int string_equals(const void* _self, const void* _b) {
+	const struct string *self = _self;
+	const struct string *b = _b;
+	// same pointers?
+	if (self == b)
+		return 1;
+
+	if (!b || b->c != string)
+		return 0;
+	return strcmp(((struct _internal_string*) (self->internals))->text, ((struct _internal_string*) (b->internals))->text) == 0 ? 1 : 0;
+}
 
 unsigned int string_length(void* self) {
 	struct string* string = (struct string*)self;

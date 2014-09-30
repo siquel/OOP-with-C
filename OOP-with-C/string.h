@@ -19,6 +19,7 @@ struct string {
 
 static void* string_new(void* self, va_list *args);
 static void* string_free(void* self);
+static int string_equals(const void* self, const void* b);
 
 // methods
 unsigned int string_length(void* self);

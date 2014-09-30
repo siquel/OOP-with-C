@@ -10,7 +10,8 @@ struct t_class {
 	void* (*ctor)(void* self, va_list *args);
 	// destructor
 	void* (*dtor)(void* self);
-	
+	// equals
+	int (*eq)(const void* self, const void* b);
 };
 
 
